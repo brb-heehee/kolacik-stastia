@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title> Tvoj Koláčik Šťastia 🥠</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      text-align: center;
+      transition: background 0.8s ease;
+      background-color: #7c92dd;
+    }
+    #bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url('pozadie.png');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      opacity: 0.2; /* ← tu nastavíš priesvitnosť */
+      z-index: -1;
+    }
+    header {
+      width: 100%;
+      padding: 1em 0;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+      transition: background-color 0.8s ease;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 1.8em;
+      padding: 0.5em 0;
+      transition: color 0.8s ease;
+    }
+
+    main {
+      position: relative;
+      padding: 2em;
+    }
+    
+  #cookie-img {
+      position: absolute;
+      top: 70%;
+      left: 40%;
+      width: 1000px; /* uprav podľa potreby */
+      height: auto;
+      transform: translate(-50%, -50%);
+      opacity: 1.0; /* zníži pozornosť, citát bude dobre čitateľný */
+      z-index: 1;
+    }
+    #quote {
+      position: relative;
+      z-index: 2;
+      font-size: 1.6em;
+      max-width: 600px;
+      margin-top: 2em;
+      text-shadow: 0 0 4px white; /* zvýrazní text, voliteľné */
+      transition: background-color 0.8s ease, color 0.8s ease, border-left-color 0.8s ease;
+    }
+
+    footer {
+      position: absolute;
+      bottom: 10px;
+      font-size: 0.8em;
+      color: #aaa;
+    }
+  </style>
+</head>
+<body>
+  <main>
+  <img id='cookie-img' src="cookie.png" alt="Koláčik šťastia">
+  <div id="quote"></div>
+  <div id="bg"></div>
+</main>
+  <footer>
+    &copy; 2025 Tvoje Koláčiky Šťastia
+  </footer>
+
+  <script>
+    const messages = [
+      "Dnes budeš úspešný/á.                                                                          ",
+      "Usmej sa, niekto na teba myslí!                                                                ",
+      "Každý deň je nová príležitosť.                                                                 ",
+      "Si silnejší/ia než si myslíš.                                                                  ",
+      "Aj malé kroky vedú k veľkým cieľom.                                                            ",
+      "Dýchaj. Zvládneš to.",
+      "Tvoja energia je nákazlivá.",
+      "Odvaha nie je neprítomnosť strachu, ale rozhodnutie konať napriek nemu.",
+      "Ver si. Si jedinečný/á.",
+      "Aj tá najtemnejšia noc skončí východom slnka.",
+      'Ak niečo zješ a nikto ťa pri tom nevidel, akoby to ani nemalo kalórie.',
+      'Na obzore je nový vzťah.',
+      'Ignoruj predošlý koláčik.',
+      'Láska je ako kvet. Priateľstvo je ako strom, čo dáva tieň.',
+      'Dve veci, za ktorými sa nikdy netreba naháňať: Skutoční priatelia a skutočná láska.',
+      'Keď prestaneš od ľudí očakávať dokonalosť, môžeš ich mať rád/rada takých, akí naozaj sú.',
+      '„Pú, ako sa píše láska?“ „Láska sa nepíše, Prasiatko… Láska sa cíti.“',
+      'Nemôžeš zmeniť, čo sa stalo. Tak si chvíľu poplač, cíť sa biedne… a potom vstaň a choď ďalej.',
+      'Pre svet si možno len jeden človek. Ale pre niekoho si celý svet.',
+      'Mám šťastie, že ťa mám vo svojom živote.',
+      'Dve veci, za ktorými sa nikdy netreba naháňať: Praví priatelia a pravá láska.',
+      'Nikto nie je ty a práve to je tvoja superschopnosť.',
+      "Najdôležitejšie, čo nosíš, je tvoja osobnosť.",
+      "When in doubt, slay.",
+      "Najodvážnejší čin je myslieť sám za seba. Nahlas.",
+      "Skutočný priateľ vidí bolesť v tvojich očiach, aj keď sa usmievaš.",
+      "Zraniteľnosť znie ako viera a vyzerá ako odvaha.",
+      "Pozri sa, kam až si sa dostal/a.",
+      "Umenie života nie je kontrolovať, čo sa nám stane, ale využívať to, čo sa nám deje.",
+      "Dávaj si pozor, komu dôveruješ. Soľ a cukor vyzerajú rovnako.",
+      "Načo sú nám krídla, bez odvahy lietať.",
+      "Ak chceš vidieť dúhu, musíš vydržať dážď!",
+      "Žena je ako vrecúško čaju; nikdy nevieš, aké je silné, kým nie je v horúcej vode.",
+      "Jedna zlá kapitola neznamená, že tvojže tvoj príbeh sa skončil.",
+    ];
+
+    const themes = [
+      { bg: '#fff8dc', text: '#6b4e16', header: '#ffe599' }, // žltá
+      { bg: '#ffe4f0', text: '#a52a6c', header: '#ffc0cb' }, // ružová
+      { bg: '#e0f7ff', text: '#004d66', header: '#b2ebf2' }, // svetlomodrá
+      { bg: '#f4e7da', text: '#5d4037', header: '#d7ccc8' }, // hnedá
+      { bg: '#e5fce4', text: '#2e7d32', header: '#c8e6c9' }, // zelenkavá
+      { bg: '#f3e5f5', text: '#6a1b9a', header: '#e1bee7' }  // fialová
+    ];
+
+
+    const quote = messages[Math.floor(Math.random() * messages.length)];
+    const theme = themes[Math.floor(Math.random() * themes.length)];
+
+    //document.body.style.background = theme.bg;
+    document.getElementById("quote").innerText = quote;
+    const quoteBox = document.getElementById("quote");
+    quoteBox.style.color = theme.text;
+
+    const header = document.getElementById("header");
+    const headerTitle = document.getElementById("header-title");
+    header.style.backgroundColor = theme.header;
+    headerTitle.style.color = theme.text;
+  </script>
+</body>
+</html>
