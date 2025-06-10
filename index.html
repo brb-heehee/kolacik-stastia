@@ -24,11 +24,11 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background-image: url('pozadie.png');
+      background-image: url('poz.png');
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
-      opacity: 0.2; /* ← tu nastavíš priesvitnosť */
+      opacity: 0.7; /* ← tu nastavíš priesvitnosť */
       z-index: -1;
     }
     header {
@@ -52,7 +52,7 @@
     
   #cookie-img {
       position: absolute;
-      top: 60%;
+      top: 70%;
       left: 40%;
       width: 1000px; /* uprav podľa potreby */
       height: auto;
@@ -90,40 +90,51 @@
 
   <script>
     const messages = [
-      "Dnes budeš úspešný/á.                                                                          ",
-      "Usmej sa, niekto na teba myslí!                                                                ",
-      "Každý deň je nová príležitosť.                                                                 ",
-      "Si silnejší/ia než si myslíš.                                                                  ",
-      "Aj malé kroky vedú k veľkým cieľom.                                                            ",
-      "Dýchaj. Zvládneš to.",
-      "Tvoja energia je nákazlivá.",
-      "Odvaha nie je neprítomnosť strachu, ale rozhodnutie konať napriek nemu.",
-      "Ver si. Si jedinečný/á.",
-      "Aj tá najtemnejšia noc skončí východom slnka.",
-      'Ak niečo zješ a nikto ťa pri tom nevidel, akoby to ani nemalo kalórie.',
-      'Na obzore je nový vzťah.',
-      'Ignoruj predošlý koláčik.',
-      'Láska je ako kvet. Priateľstvo je ako strom, čo dáva tieň.',
-      'Dve veci, za ktorými sa nikdy netreba naháňať: Skutoční priatelia a skutočná láska.',
-      'Keď prestaneš od ľudí očakávať dokonalosť, môžeš ich mať rád/rada takých, akí naozaj sú.',
-      '„Pú, ako sa píše láska?“ „Láska sa nepíše, Prasiatko… Láska sa cíti.“',
-      'Nemôžeš zmeniť, čo sa stalo. Tak si chvíľu poplač, cíť sa biedne… a potom vstaň a choď ďalej.',
-      'Pre svet si možno len jeden človek. Ale pre niekoho si celý svet.',
-      'Mám šťastie, že ťa mám vo svojom živote.',
-      'Dve veci, za ktorými sa nikdy netreba naháňať: Praví priatelia a pravá láska.',
-      'Nikto nie je ty a práve to je tvoja superschopnosť.',
-      "Najdôležitejšie, čo nosíš, je tvoja osobnosť.",
-      "When in doubt, slay.",
-      "Najodvážnejší čin je myslieť sám za seba. Nahlas.",
-      "Skutočný priateľ vidí bolesť v tvojich očiach, aj keď sa usmievaš.",
-      "Zraniteľnosť znie ako viera a vyzerá ako odvaha.",
-      "Pozri sa, kam až si sa dostal/a.",
-      "Umenie života nie je kontrolovať, čo sa nám stane, ale využívať to, čo sa nám deje.",
-      "Dávaj si pozor, komu dôveruješ. Soľ a cukor vyzerajú rovnako.",
-      "Načo sú nám krídla, bez odvahy lietať.",
-      "Ak chceš vidieť dúhu, musíš vydržať dážď!",
-      "Žena je ako vrecúško čaju; nikdy nevieš, aké je silné, kým nie je v horúcej vode.",
-      "Jedna zlá kapitola neznamená, že tvojže tvoj príbeh sa skončil.",
+      "Dnes ti osud praje… ale zajtra má voľno.",
+      "Tvoj šťastný deň je… bol včera. Prepáč.",
+      "Usmej sa – niekto si možno myslí, že vieš, čo robíš.",
+      "Dostaneš chuť na pizzu. Odporúčam to neignorovať.",
+      "Láska ťa nájde… keď konečne vyjdeš z domu.",
+      "Tvoje ponožky dnes budú záhadne zmiznúť.",
+      "Nie si lenivý. Si energeticky úsporný.",
+      "Tvoje budúce ja ti ďakuje, že si si dnes dal koláčik.",
+      "Zajtra stretneš niekoho zaujímavého… možno v zrkadle.",
+      "Osud ti čoskoro pošle e-mail. Skontroluj spam.",
+      "Svet potrebuje tvoju jedinečnosť. Ale možno až zajtra.",
+      "Tvoj ďalší nápad bude geniálny. Ak nezabudneš, aký to bol.",
+      "Dnes sa ti podarí niečo nečakané. Napríklad nevyliať kávu.",
+      "Tvoje šťastné číslo je: asi 7. Ale možno aj 42.",
+      "Tvoja tajná superschopnosť: prežiť pondelok.",
+      "Tvoja budúcnosť je svetlá… ak nezabudneš nabiť mobil.",
+      "Šťastie si ťa nájde… len ešte nevie tvoju adresu.",
+      "Nečakaný obrat: dnes si nezastrieš zuby špenátom!",
+      "Dnes ťa čaká úspech. Ak sa k nemu zobudíš.",
+      "Zvládneš všetko. Ale až po káve.",
+      "Máš talent. Ešte ho len treba objaviť.",
+      "Osud ťa vedie správnym smerom… ak sa otočíš.",
+      "Dnes sa ti podarí niečo nečakané… ako si zaviazať obe topánky.",
+      "V najbližšej budúcnosti: niečo ťa rozosmeje. Možno práve tento odkaz.",
+      "Tvoj vnútorný hlas má dnes voľno. Rozhodni sa sám!",
+      "Zajtra sa ti podarí niečo veľké. Ako nezabudnúť kľúče.",
+      "Tvoja aura žiari. Ale možno je to len omrvinka na čele.",
+      "Na ceste je zmena… dúfaj, že nie klimatická.",
+      "Usmej sa – je to tvoj najlacnejší upgrade.",
+      "Dnešná predpoveď: 90 % šanca na vtipné trapasy.",
+      "Neber život príliš vážne. Ani koláčiky nie.",
+      "Tvoja budúcnosť: menej stresu, viac koláčikov.",
+      "Dnes ťa čaká výzva… a potom zaslúžený oddych.",
+      "Pozor: tvoje šťastie sa môže šmyknúť na banánovej šupke.",
+      "Zvládneš všetko, čo ti život hodí pod nohy. Aj babánovú šupku.",
+      "Čoskoro ťa čaká objav: kde si dal ovládač.",
+      "Dnes je ideálny deň na to, aby si sa tváril múdro.",
+      "Tvoja intuícia dnes funguje na 110 %. Použi ju na výber zákusku.",
+      "Zajtra ťa niekto prekvapí… možno ty sám seba.",
+      "Tvoja nálada sa zlepší… hneď ako doješ tento koláčik.",
+      "Niekto si o tebe myslí, že si geniálny. Nepokaz to.",
+      "Nie všetko, čo sa blyští, je zlato. Niekedy je to len masť.",
+      "Máš charizmu. A ak nie, tak aspoň pekné vlasy.",
+      "Dnes sa ti podarí niečo skvelé. Minimálne v duchu.",
+      "Si výnimočný. Dokonca aj medzi koláčikmi šťastia.",
     ];
 
     const themes = [
